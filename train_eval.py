@@ -5,6 +5,9 @@ import torch.nn as nn
 import torch.optim as optim
 from sklearn.metrics import accuracy_score, f1_score
 import json
+import torchtext
+
+torchtext.disable_torchtext_deprecation_warning()
 
 def train_and_evaluate(model, train_loader, test_loader, epochs=10, lr=0.01):
     # Loss function và Optimizer (dùng SGD, không dùng Adam)
@@ -15,6 +18,10 @@ def train_and_evaluate(model, train_loader, test_loader, epochs=10, lr=0.01):
     for epoch in range(epochs):
         model.train()
         for text, labels in train_loader:
+            mask = ~torch.isnan(labels)
+            text = text[mask]
+            labels = labels[mask].long()
+
             optimizer.zero_grad()
             outputs = model(text)
             loss = criterion(outputs, labels)
@@ -27,6 +34,10 @@ def train_and_evaluate(model, train_loader, test_loader, epochs=10, lr=0.01):
     all_preds, all_labels = [], []
     with torch.no_grad():
         for text, labels in test_loader:
+            mask = ~torch.isnan(labels)
+            text = text[mask]
+            labels = labels[mask].long()
+
             outputs = model(text)
             preds = torch.argmax(outputs, dim=1)
             all_preds.extend(preds.tolist())
@@ -54,3 +65,4 @@ for pretrained in [True, False]:
 with open("results.json", "w") as f:
     json.dump(results, f, indent=4)
 
+torch.save(model.state_dict(), 'model/rnn_model.pt')

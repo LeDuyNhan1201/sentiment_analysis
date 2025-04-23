@@ -7,18 +7,20 @@ def extract_text_and_label(input_file, output_file):
         reader = csv.reader(infile)
         writer = csv.writer(outfile)
 
-        # Write header
+        next(reader)  # Skip the header row in the input file
+
+        # Write new header to output
         writer.writerow(['text', 'label'])
 
         for row in reader:
             if len(row) >= 2:  # Ensure at least 2 columns
-                label = row[-2]
-                text = row[-1]
+                label = row[-2][0].upper() + row[-2][1:]
+                text = row[-3]
                 writer.writerow([text, label])
 
 
 extract_text_and_label(
-    'data/twitter_training.csv',
+    'data/sentiment_analysis.csv',
     'sentiment_data.csv'
 )
 

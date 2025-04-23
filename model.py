@@ -1,7 +1,5 @@
-import torch
 import torch.nn as nn
 import torchtext.vocab as vocab
-
 
 class RNNModel(nn.Module):
     def __init__(self, vocab_size, embedding_dim, hidden_dim, output_dim, pretrained=False):
