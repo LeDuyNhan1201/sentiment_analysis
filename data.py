@@ -1,12 +1,11 @@
-import json
+from collections import Counter
 
+import nltk
 import pandas as pd
 import torch
-from torch.utils.data import Dataset, DataLoader
 from nltk.tokenize import word_tokenize
-import nltk
 from sklearn.model_selection import train_test_split
-from collections import Counter
+from torch.utils.data import Dataset, DataLoader
 
 nltk.download('punkt_tab')
 
@@ -50,8 +49,3 @@ test_dataset = SentimentDataset(test_texts, test_labels)
 
 train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
 test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
-
-# Sau khi xây vocab
-with open("vocab.json", "w") as f:
-    json.dump(vocab, f)
-

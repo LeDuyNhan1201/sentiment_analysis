@@ -1,13 +1,12 @@
-from data import train_loader, test_loader, vocab
-from model import RNNModel
+import json
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
 from sklearn.metrics import accuracy_score, f1_score
-import json
-import torchtext
 
-torchtext.disable_torchtext_deprecation_warning()
+from data import train_loader, test_loader, vocab
+from model import RNNModel
 
 def train_and_evaluate(model, train_loader, test_loader, epochs=10, lr=0.01):
     # Loss function và Optimizer (dùng SGD, không dùng Adam)
@@ -65,4 +64,3 @@ for pretrained in [True, False]:
 with open("results.json", "w") as f:
     json.dump(results, f, indent=4)
 
-torch.save(model.state_dict(), 'model/rnn_model.pt')
