@@ -1,3 +1,4 @@
+import json
 from collections import Counter
 
 import nltk
@@ -49,3 +50,6 @@ test_dataset = SentimentDataset(test_texts, test_labels)
 
 train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
 test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
+
+with open("vocab.json", "w") as f:
+    json.dump(vocab, f)

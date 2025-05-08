@@ -1,0 +1,12 @@
+[
+    {
+        "experiment": "Pretrained",
+        "accuracy": 0.4807119895225622,
+        "f1_score": 0.23316479400749066
+    },
+    {
+        "experiment": "Scratch",
+        "accuracy": 0.48220026193594473,
+        "f1_score": 0.24326343657751767
+    }
+]

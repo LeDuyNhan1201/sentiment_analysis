@@ -102,6 +102,6 @@ print("First sample indices:\n", sample_batch[0][0])
 print("First sample label:\n", sample_batch[1][0])
 
 # Sau khi xây vocab
-with open("vocab.json", "w") as f:
+with open("vocab_debug.json", "w") as f:
     json.dump(vocab, f)
 

@@ -1,10 +1,22 @@
-{
-    "RNN_Pretrained=True": {
-        "Accuracy": 0.3,
-        "F1-score": 0.15384615384615385
+[
+    {
+        "experiment": "Pretrained",
+        "accuracy": 0.49174917491749176,
+        "f1_score": 0.2415254703790556
     },
-    "RNN_Pretrained=False": {
-        "Accuracy": 0.3,
-        "F1-score": 0.15384615384615385
+    {
+        "experiment": "Scratch",
+        "accuracy": 0.48514851485148514,
+        "f1_score": 0.23103103103103104
+    },
+    {
+        "experiment": "Pretrained",
+        "accuracy": 0.48514851485148514,
+        "f1_score": 0.2223509632860778
+    },
+    {
+        "experiment": "Scratch",
+        "accuracy": 0.429042904290429,
+        "f1_score": 0.2114404864620568
     }
-}
+]

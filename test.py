@@ -30,7 +30,7 @@ def predict_sentiment(text):
 
 
 print(predict_sentiment("I really love this product!"))
-print(predict_sentiment("This is the worst experience ever."))
+print(predict_sentiment("I hate you."))
 print(predict_sentiment("It's okay, not too bad."))
 print(predict_sentiment("I love you"))
 
